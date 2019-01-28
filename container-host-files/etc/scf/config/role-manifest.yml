@@ -16,9 +16,9 @@ releases:
   url: "https://bosh.io/d/github.com/cloudfoundry/cf-smoke-tests-release?v=40.0.6"
   sha1: "df727e63fb046c694098527845a2a0294b257635"
 - name: cf-syslog-drain
-  url: https://bosh.io/d/github.com/cloudfoundry/cf-syslog-drain-release?v=7.0
-  version: "7.0"
-  sha1: 5b633a277044f78f333b68da54f804b2384d889d
+  version: "8.1"
+  url: "https://bosh.io/d/github.com/cloudfoundry/cf-syslog-drain-release?v=8.1"
+  sha1: "1a4de5962d9f0d472271da7daf277c35b0969635"
 - name: cflinuxfs2
   version: "1.257.0"
   url: "https://bosh.io/d/github.com/cloudfoundry/cflinuxfs2-release?v=1.257.0"
@@ -137,6 +137,7 @@ instance_groups:
   scripts:
   - scripts/forward_logfiles.sh
   - scripts/patches/fix_monit_rsyslog.sh
+  - scripts/patches/fix_syslog_scheduler_bpm.sh
   jobs:
   - name: global-properties # needs to be first so images use it for processing monit templates
     release: scf-helper
@@ -174,10 +175,18 @@ instance_groups:
         - name: sched-health
           protocol: TCP
           internal: 8080
+  - name: bpm
+    release: bpm
+    properties:
+      bosh_containerization:
+        run:
+          capabilities: [ALL]
+        pod-security-policy: privileged
 - name: adapter
   scripts:
   - scripts/forward_logfiles.sh
   - scripts/patches/fix_monit_rsyslog.sh
+  - scripts/patches/fix_syslog_adapter_bpm.sh
   jobs:
   - name: global-properties # needs to be first so images use it for processing monit templates
     release: scf-helper
@@ -218,6 +227,13 @@ instance_groups:
         - name: adapter-health
           protocol: TCP
           internal: 8080
+  - name: bpm
+    release: bpm
+    properties:
+      bosh_containerization:
+        run:
+          capabilities: [ALL]
+        pod-security-policy: privileged
 - name: nats
   environment_scripts:
   - scripts/configure-HA-hosts.sh

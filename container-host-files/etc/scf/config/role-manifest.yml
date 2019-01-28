@@ -36,9 +36,9 @@ releases:
   url: "https://bosh.io/d/github.com/cloudfoundry/diego-release?v=2.16.0"
   sha1: "dec82d771afd83e1d8e85f512e6a619b371e7f19"
 - name: garden-runc
-  version: "1.16.3"
-  url: "https://bosh.io/d/github.com/cloudfoundry/garden-runc-release?v=1.16.3"
-  sha1: "2a7c813e7e4d862e19334addf022916fb6b91eb0"
+  version: "1.17.2"
+  url: "https://bosh.io/d/github.com/cloudfoundry/garden-runc-release?v=1.17.2"
+  sha1: "881aad6294233e7c80ee62a48841fbe21af4a35e"
 - name: loggregator
   version: "103.1"
   url: "https://bosh.io/d/github.com/cloudfoundry/loggregator-release?v=103.1"

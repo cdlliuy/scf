@@ -20,9 +20,9 @@ releases:
   version: "7.0"
   sha1: 5b633a277044f78f333b68da54f804b2384d889d
 - name: cflinuxfs2
-  version: "1.233.0"
-  url: "https://bosh.io/d/github.com/cloudfoundry/cflinuxfs2-release?v=1.233.0"
-  sha1: "a64b14ff25c13a482124c094ab4884e2ebf67e08"
+  version: "1.257.0"
+  url: "https://bosh.io/d/github.com/cloudfoundry/cflinuxfs2-release?v=1.257.0"
+  sha1: "011027a87fafabd9339cafaefd8ea85359684a3b"
 - name: cflinuxfs3
   version: "0.48.0"
   url: "https://bosh.io/d/github.com/cloudfoundry/cflinuxfs3-release?v=0.48.0"
@@ -44,9 +44,9 @@ releases:
   url: "https://bosh.io/d/github.com/cloudfoundry/loggregator-release?v=103.1"
   sha1: "4377aac0179f1e9944ba5b936d59ef0427163f7b"
 - name: nats
-  version: "25"
-  url: "https://bosh.io/d/github.com/cloudfoundry/nats-release?v=25"
-  sha1: "a83d5ae37125e48284fd50b099befac1de419a8a"
+  version: "26"
+  url: "https://bosh.io/d/github.com/cloudfoundry/nats-release?v=26"
+  sha1: "2f2c27acdfff81f3519968921686522518ab5783"
 - name: nfs-volume
   version: "1.2.0"
   url: "https://bosh.io/d/github.com/cloudfoundry/nfs-volume-release?v=1.2.0"
@@ -56,9 +56,9 @@ releases:
   url: "https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.180.0"
   sha1: "990c2c319e6063573eec18dbeb7c3631a382db7d"
 - name: statsd-injector
-  url: https://bosh.io/d/github.com/cloudfoundry/statsd-injector-release?v=1.3.0
-  version: 1.3.0
-  sha1: 5b9357484032e5217cead8f20362f5802c751de0
+  version: "1.5.0"
+  url: "https://bosh.io/d/github.com/cloudfoundry/statsd-injector-release?v=1.5.0"
+  sha1: "49a38aca12e0fd2ec28f96c780c1971427dda04e"
 - name: loggregator-agent
   url: https://bosh.io/d/github.com/cloudfoundry/loggregator-agent-release?v=2.0
   version: "2.0"
@@ -224,6 +224,7 @@ instance_groups:
   scripts:
   - scripts/forward_logfiles.sh
   - scripts/patches/fix_monit_rsyslog.sh
+  - scripts/patches/fix_nats_bpm.sh
   jobs:
   - name: global-properties # needs to be first so images use it for processing monit templates
     release: scf-helper
@@ -263,6 +264,13 @@ instance_groups:
         - name: nats-routes
           protocol: TCP
           internal: 4223
+  - name: bpm
+    release: bpm
+    properties:
+      bosh_containerization:
+        run:
+          capabilities: [ALL]
+        pod-security-policy: privileged
 - name: mysql
   scripts:
   - scripts/create_mysql_data_tmp.sh

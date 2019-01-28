@@ -7,10 +7,6 @@ releases:
   version: "1.66.0"
   url: "https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.66.0"
   sha1: "4236495d4a047fb9396996aba3daea9e0cb3f1bf"
-- name: cf-mysql
-  url: https://bosh.io/d/github.com/cloudfoundry/cf-mysql-release?v=36.15.0
-  version: 36.15.0
-  sha1: 0764d9d6aae7cefd10019437ed83e7715e614633
 - name: cf-smoke-tests
   version: "40.0.6"
   url: "https://bosh.io/d/github.com/cloudfoundry/cf-smoke-tests-release?v=40.0.6"
@@ -51,6 +47,10 @@ releases:
   version: "1.2.0"
   url: "https://bosh.io/d/github.com/cloudfoundry/nfs-volume-release?v=1.2.0"
   sha1: "de807ffa3fc84949bb92edac6a4152245826d6da"
+- name: pxc
+  version: "0.14.0"
+  url: "https://bosh.io/d/github.com/cloudfoundry-incubator/pxc-release?v=0.14.0"
+  sha1: "517aa5ef99be020d7dd0662789d11f1238401f4c"
 - name: cf-routing
   version: "0.180.0"
   url: "https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.180.0"
@@ -276,8 +276,8 @@ instance_groups:
     release: scf-helper
   - name: patch-properties
     release: scf-helper
-  - name: mysql
-    release: cf-mysql
+  - name: pxc-mysql
+    release: pxc
     provides:
       mysql: {}
     properties:
@@ -302,7 +302,7 @@ instance_groups:
           protocol: TCP
           internal: 4444
   - name: proxy
-    release: cf-mysql
+    release: pxc
     provides:
       proxy: {}
     properties:

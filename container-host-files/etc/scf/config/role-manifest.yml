@@ -4,9 +4,9 @@ releases:
   url: "https://bosh.io/d/github.com/cloudfoundry-incubator/bpm-release?v=1.0.0"
   sha1: "42b95d4a0d6d15dd0b0ead62418ffb56208e2307"
 - name: capi
-  version: "1.66.0"
-  url: "https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.66.0"
-  sha1: "4236495d4a047fb9396996aba3daea9e0cb3f1bf"
+  version: "1.74.0"
+  url: "https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.74.0"
+  sha1: "7973426f876d2b43f4491c6baa99a37e5db5ed87"
 - name: cf-mysql
   url: https://bosh.io/d/github.com/cloudfoundry/cf-mysql-release?v=36.15.0
   version: 36.15.0
@@ -720,6 +720,7 @@ instance_groups:
   - scripts/patches/cc_pre_start_home.sh
   - scripts/patches/cc_ng_disable_credhub.sh
   - scripts/patches/fix_route_registrar_bpm_dns.sh
+  - scripts/patches/fix_cc_ng_bpm.sh
   jobs:
   - name: global-properties # needs to be first so images use it for processing monit templates
     release: scf-helper
@@ -810,6 +811,7 @@ instance_groups:
   - scripts/forward_logfiles.sh
   - scripts/patches/cc_worker_disable_credhub.sh
   - scripts/patches/fix_monit_rsyslog.sh
+  - scripts/patches/fix_cc_worker_bpm.sh
   jobs:
   - name: global-properties # needs to be first so images use it for processing monit templates
     release: scf-helper
@@ -841,6 +843,13 @@ instance_groups:
                       values:
                       - cc-worker
                   topologyKey: "beta.kubernetes.io/os"
+  - name: bpm
+    release: bpm
+    properties:
+      bosh_containerization:
+        run:
+          capabilities: [ALL]
+        pod-security-policy: privileged
 - name: blobstore
   environment_scripts:
   - scripts/configure-HA-hosts.sh
@@ -850,6 +859,7 @@ instance_groups:
   - scripts/patches/fix_chown_blobstore_packages.sh
   - scripts/patches/fix_monit_rsyslog.sh
   - scripts/patches/fix_route_registrar_bpm_dns.sh
+  - scripts/patches/fix_blobstore_bpm.sh
   jobs:
   - name: global-properties # needs to be first so images use it for processing monit templates
     release: scf-helper
@@ -897,6 +907,7 @@ instance_groups:
   - scripts/patches/cc_clock_wait_for_api_ready.sh
   - scripts/patches/cc_clock_disable_credhub.sh
   - scripts/patches/fix_monit_rsyslog.sh
+  - scripts/patches/fix_cc_clock_bpm.sh
   jobs:
   - name: global-properties # needs to be first so images use it for processing monit templates
     release: scf-helper
@@ -930,6 +941,13 @@ instance_groups:
                   topologyKey: "beta.kubernetes.io/os"
   - name: statsd_injector
     release: statsd-injector
+  - name: bpm
+    release: bpm
+    properties:
+      bosh_containerization:
+        run:
+          capabilities: [ALL]
+        pod-security-policy: privileged
 - name: doppler
   scripts:
   - scripts/forward_logfiles.sh
@@ -1112,6 +1130,8 @@ instance_groups:
   scripts:
   - scripts/forward_logfiles.sh
   - scripts/patches/fix_monit_rsyslog.sh
+  - scripts/patches/fix_tps_bpm.sh
+  - scripts/patches/fix_cc_uploader_bpm.sh
   jobs:
   - name: global-properties # needs to be first so images use it for processing monit templates
     release: scf-helper
@@ -1153,6 +1173,13 @@ instance_groups:
         - name: cc-up-dbg
           protocol: TCP
           internal: 17018
+  - name: bpm
+    release: bpm
+    properties:
+      bosh_containerization:
+        run:
+          capabilities: [ALL]
+        pod-security-policy: privileged
 - name: diego-ssh
   environment_scripts:
   - scripts/go_log_level.sh

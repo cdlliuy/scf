@@ -4,9 +4,9 @@ releases:
   url: "https://bosh.io/d/github.com/cloudfoundry-incubator/bpm-release?v=1.0.0"
   sha1: "42b95d4a0d6d15dd0b0ead62418ffb56208e2307"
 - name: capi
-  version: "1.66.0"
-  url: "https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.66.0"
-  sha1: "4236495d4a047fb9396996aba3daea9e0cb3f1bf"
+  version: "1.74.0"
+  url: "https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.74.0"
+  sha1: "7973426f876d2b43f4491c6baa99a37e5db5ed87"
 - name: cf-smoke-tests
   version: "40.0.44"
   url: "https://bosh.io/d/github.com/cloudfoundry/cf-smoke-tests-release?v=40.0.44"

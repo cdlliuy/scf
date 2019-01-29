@@ -28,9 +28,9 @@ releases:
   url: "https://bosh.io/d/github.com/pivotal-cf/credhub-release?v=2.1.2"
   sha1: "754a24dbffe8bc5efce7e698d935b5f4df541f38"
 - name: diego
-  version: "2.16.0"
-  url: "https://bosh.io/d/github.com/cloudfoundry/diego-release?v=2.16.0"
-  sha1: "dec82d771afd83e1d8e85f512e6a619b371e7f19"
+  version: "2.25.0"
+  url: "https://bosh.io/d/github.com/cloudfoundry/diego-release?v=2.25.0"
+  sha1: "e896a1e8205eff27bf7778f5bfa1d42c8befe943"
 - name: garden-runc
   version: "1.17.2"
   url: "https://bosh.io/d/github.com/cloudfoundry/garden-runc-release?v=1.17.2"

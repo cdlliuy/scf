@@ -7,6 +7,10 @@ releases:
   version: "1.74.0"
   url: "https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.74.0"
   sha1: "7973426f876d2b43f4491c6baa99a37e5db5ed87"
+- name: cf-routing
+  version: "0.184.0"
+  url: "https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.184.0"
+  sha1: "f35eb9884e1c097ff21843e6f2d0eebd22ac2073"
 - name: cf-smoke-tests
   version: "40.0.44"
   url: "https://bosh.io/d/github.com/cloudfoundry/cf-smoke-tests-release?v=40.0.44"
@@ -55,10 +59,6 @@ releases:
   version: "0.14.0"
   url: "https://bosh.io/d/github.com/cloudfoundry-incubator/pxc-release?v=0.14.0"
   sha1: "517aa5ef99be020d7dd0662789d11f1238401f4c"
-- name: cf-routing
-  version: "0.180.0"
-  url: "https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.180.0"
-  sha1: "990c2c319e6063573eec18dbeb7c3631a382db7d"
 - name: statsd-injector
   version: "1.6.0"
   url: "https://bosh.io/d/github.com/cloudfoundry/statsd-injector-release?v=1.6.0"

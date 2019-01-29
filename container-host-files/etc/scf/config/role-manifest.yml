@@ -39,6 +39,10 @@ releases:
   version: "104.5"
   url: "https://bosh.io/d/github.com/cloudfoundry/loggregator-release?v=104.5"
   sha1: "dc98ec8336eb1f1db6ef2c5931c196984171a34d"
+- name: loggregator-agent
+  version: "3.3"
+  url: "https://bosh.io/d/github.com/cloudfoundry/loggregator-agent-release?v=3.3"
+  sha1: "8f0953bfbeb20067e63727757a3d329737e40cdf"
 - name: nats
   version: "26"
   url: "https://bosh.io/d/github.com/cloudfoundry/nats-release?v=26"
@@ -59,10 +63,6 @@ releases:
   version: "1.6.0"
   url: "https://bosh.io/d/github.com/cloudfoundry/statsd-injector-release?v=1.6.0"
   sha1: "04b8fa5fbff2784f4ea58510ca9f1ea9d4d47645"
-- name: loggregator-agent
-  url: https://bosh.io/d/github.com/cloudfoundry/loggregator-agent-release?v=2.0
-  version: "2.0"
-  sha1: df91c31c15da68c7b2905645b20b93a930627d46
 - name: binary-buildpack-release
   url: "https://s3.amazonaws.com/suse-final-releases/binary-buildpack-release-1.0.29.1.tgz"
   version: "1.0.29.1"

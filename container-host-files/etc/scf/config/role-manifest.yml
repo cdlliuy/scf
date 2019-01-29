@@ -301,6 +301,16 @@ instance_groups:
         - name: xtrabackup
           protocol: TCP
           internal: 4444
+
+  - name: galera-agent
+    release: pxc
+  - name: gra-log-purger
+    release: pxc
+  - name: cluster-health-logger
+    release: pxc
+  - name: bootstrap
+    release: pxc
+
   - name: proxy
     release: pxc
     provides:
@@ -352,12 +362,12 @@ instance_groups:
   configuration:
     templates:
       properties.cf_mysql.external_host: ((DOMAIN))
-      properties.cf_mysql.mysql.admin_password: ((MYSQL_ADMIN_PASSWORD))
-      properties.cf_mysql.mysql.cluster_health.password: ((MYSQL_CLUSTER_HEALTH_PASSWORD))
-      properties.cf_mysql.mysql.galera_healthcheck.db_password: ((MYSQL_ADMIN_PASSWORD))
-      properties.cf_mysql.mysql.galera_healthcheck.endpoint_password: ((MYSQL_GALERA_HEALTHCHECK_ENDPOINT_PASSWORD))
-      properties.cf_mysql.proxy.api_password: ((MYSQL_PROXY_ADMIN_PASSWORD))
-      properties.cf_mysql.proxy.healthcheck_timeout_millis: ((MYSQL_PROXY_HEALTHCHECK_TIMEOUT))
+      properties.admin_password: ((MYSQL_ADMIN_PASSWORD))
+      properties.db_password: ((MYSQL_CLUSTER_HEALTH_PASSWORD))
+      properties.db_password: ((MYSQL_ADMIN_PASSWORD))
+      properties.endpoint_password: ((MYSQL_GALERA_HEALTHCHECK_ENDPOINT_PASSWORD))
+      properties.api_password: ((MYSQL_PROXY_ADMIN_PASSWORD))
+      properties.healthcheck_timeout_millis: ((MYSQL_PROXY_HEALTHCHECK_TIMEOUT))
 - name: cf-usb-group
   environment_scripts:
   - scripts/configure-HA-hosts.sh

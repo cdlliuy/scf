@@ -319,7 +319,6 @@ properties:
     ssh_proxy:
       enable_cf_auth: true
   doppler:
-    locked_memory_limit: kernel
     port: 4443
   enable_consul_service_registration: false
   etcd:
@@ -406,8 +405,6 @@ properties:
     enabled: true
   tcp_router:
     health_check_port: 8080
-  traffic_controller:
-    locked_memory_limit: kernel
   uaa:
     clients:
       # Note that these clients are overridden in the dev-only UAA role; that is

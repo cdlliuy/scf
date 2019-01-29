@@ -36,9 +36,9 @@ releases:
   url: "https://bosh.io/d/github.com/cloudfoundry/garden-runc-release?v=1.17.2"
   sha1: "881aad6294233e7c80ee62a48841fbe21af4a35e"
 - name: loggregator
-  version: "103.1"
-  url: "https://bosh.io/d/github.com/cloudfoundry/loggregator-release?v=103.1"
-  sha1: "4377aac0179f1e9944ba5b936d59ef0427163f7b"
+  version: "104.5"
+  url: "https://bosh.io/d/github.com/cloudfoundry/loggregator-release?v=104.5"
+  sha1: "dc98ec8336eb1f1db6ef2c5931c196984171a34d"
 - name: nats
   version: "26"
   url: "https://bosh.io/d/github.com/cloudfoundry/nats-release?v=26"
@@ -2234,7 +2234,6 @@ configuration:
     properties.diego.ssh_proxy.uaa.url: https://((KUBERNETES_NAMESPACE)).((UAA_HOST))
     properties.diego.ssh_proxy.uaa_secret: '"((UAA_CLIENTS_DIEGO_SSH_PROXY_SECRET))"'
     properties.domain: '"((DOMAIN))"'
-    properties.doppler.addr: '"doppler-doppler-set.((KUBERNETES_NAMESPACE)).svc.((KUBERNETES_CLUSTER_DOMAIN))"'
     properties.fissile.monit.password: '"((MONIT_PASSWORD))"'
     properties.garden.apparmor_profile: '"((GARDEN_APPARMOR_PROFILE))"' # Quoting needed to pass through empty string
     properties.garden.btrfs-active: "((^GARDEN_DISABLE_BTRFS))true((/GARDEN_DISABLE_BTRFS))"
@@ -2260,7 +2259,6 @@ configuration:
     properties.loggregator.key: ((LOGGREGATOR_CLIENT_CERT_KEY))
     properties.loggregator.tls.agent.cert: '"((LOGGREGATOR_AGENT_CERT))"'
     properties.loggregator.tls.agent.key: '"((LOGGREGATOR_AGENT_CERT_KEY))"'
-    properties.loggregator.tls.ca_cert: '"((INTERNAL_CA_CERT))"'
     properties.loggregator.tls.cc_trafficcontroller.cert: ((TRAFFICCONTROLLER_CERT))
     properties.loggregator.tls.cc_trafficcontroller.key: ((TRAFFICCONTROLLER_CERT_KEY))
     properties.loggregator.tls.doppler.cert: '"((DOPPLER_CERT))"'

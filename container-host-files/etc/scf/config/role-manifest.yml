@@ -11,6 +11,10 @@ releases:
   url: https://bosh.io/d/github.com/cloudfoundry/cf-mysql-release?v=36.15.0
   version: 36.15.0
   sha1: 0764d9d6aae7cefd10019437ed83e7715e614633
+- name: cf-routing
+  version: "0.184.0"
+  url: "https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.184.0"
+  sha1: "f35eb9884e1c097ff21843e6f2d0eebd22ac2073"
 - name: cf-smoke-tests
   version: "40.0.44"
   url: "https://bosh.io/d/github.com/cloudfoundry/cf-smoke-tests-release?v=40.0.44"
@@ -55,10 +59,6 @@ releases:
   version: "1.2.0"
   url: "https://bosh.io/d/github.com/cloudfoundry/nfs-volume-release?v=1.2.0"
   sha1: "de807ffa3fc84949bb92edac6a4152245826d6da"
-- name: cf-routing
-  version: "0.180.0"
-  url: "https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.180.0"
-  sha1: "990c2c319e6063573eec18dbeb7c3631a382db7d"
 - name: statsd-injector
   version: "1.5.0"
   url: "https://bosh.io/d/github.com/cloudfoundry/statsd-injector-release?v=1.5.0"
@@ -646,6 +646,13 @@ instance_groups:
           public: true
           count-configurable: true
           max: 20
+  - name: bpm
+    release: bpm
+    properties:
+      bosh_containerization:
+        run:
+          capabilities: [ALL]
+        pod-security-policy: privileged
   configuration:
     templates:
       properties.dns_health_check_host: 'mysql-set.((KUBERNETES_NAMESPACE)).svc.((KUBERNETES_CLUSTER_DOMAIN)).'

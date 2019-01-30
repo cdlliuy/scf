@@ -8,9 +8,9 @@ releases:
   url: "https://bosh.io/d/github.com/cloudfoundry/capi-release?v=1.74.0"
   sha1: "7973426f876d2b43f4491c6baa99a37e5db5ed87"
 - name: cf-mysql
-  url: https://bosh.io/d/github.com/cloudfoundry/cf-mysql-release?v=36.15.0
-  version: 36.15.0
-  sha1: 0764d9d6aae7cefd10019437ed83e7715e614633
+  version: "36.17.0"
+  url: "https://bosh.io/d/github.com/cloudfoundry/cf-mysql-release?v=36.17.0"
+  sha1: "04cbfafa0a2c11b133da20de8282595c98bc0049"
 - name: cf-routing
   version: "0.184.0"
   url: "https://bosh.io/d/github.com/cloudfoundry-incubator/cf-routing-release?v=0.184.0"

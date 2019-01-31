@@ -959,6 +959,7 @@ instance_groups:
   scripts:
   - scripts/forward_logfiles.sh
   - scripts/patches/fix_monit_rsyslog.sh
+  - scripts/patches/fix_doppler_bpm.sh
   jobs:
   - name: global-properties # needs to be first so images use it for processing monit templates
     release: scf-helper
@@ -1008,6 +1009,13 @@ instance_groups:
         - name: doppler-grpc
           protocol: TCP
           internal: 8082
+  - name: bpm
+    release: bpm
+    properties:
+      bosh_containerization:
+        run:
+          capabilities: [ALL]
+        pod-security-policy: privileged
 - name: log-api
   environment_scripts:
   - scripts/configure-HA-hosts.sh

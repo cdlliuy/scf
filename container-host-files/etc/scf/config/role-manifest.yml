@@ -2110,7 +2110,7 @@ instance_groups:
     properties:
       bosh_containerization:
         colocated_containers:
-        - loggregator-agent        
+        - loggregator-agent
         run:
           scaling:
             min: 1
@@ -2156,7 +2156,14 @@ instance_groups:
         - name: eghealthport
           protocol: TCP
           external: 9105
-          internal: 9105  
+          internal: 9105
+  - name: bpm
+    release: bpm
+    properties:
+      bosh_containerization:
+        run:
+          capabilities: [ALL]
+        pod-security-policy: privileged            
 - name: autoscaler-actors
   if_feature: autoscaler
   scripts:
@@ -2172,7 +2179,7 @@ instance_groups:
     properties:
       bosh_containerization:
         colocated_containers:
-        - loggregator-agent        
+        - loggregator-agent
         run:
           scaling:
             min: 1
@@ -2228,7 +2235,14 @@ instance_groups:
         - name: ophealthport
           protocol: TCP
           external: 9108
-          internal: 9108                 
+          internal: 9108
+  - name: bpm
+    release: bpm
+    properties:
+      bosh_containerization:
+        run:
+          capabilities: [ALL]
+        pod-security-policy: privileged                           
 - name: loggregator-agent
   type: colocated-container
   post_config_scripts:
